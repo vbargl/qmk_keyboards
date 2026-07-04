@@ -1,14 +1,15 @@
 set shell := ["bash", "-eu", "-o", "pipefail", "-c"]
+set dotenv-load := true
 
-qmk_repo := "https://github.com/qmk/qmk_firmware.git"
-qmk_commit := "cf93bbb78fe0bbf994663555de41372c4b5e59fe"
+qmk_repo := env_var_or_default("QMK_REPO", "https://github.com/qmk/qmk_firmware.git")
+qmk_commit := env_var_or_default("QMK_COMMIT", "cf93bbb78fe0bbf994663555de41372c4b5e59fe")
 
-vial_repo := "https://github.com/vial-kb/vial-qmk.git"
-vial_commit := "00fc4627cd038ac9b7e9b8bf2b40b50e9e88aecb"
+vial_repo := env_var_or_default("VIAL_REPO", "https://github.com/vial-kb/vial-qmk.git")
+vial_commit := env_var_or_default("VIAL_COMMIT", "00fc4627cd038ac9b7e9b8bf2b40b50e9e88aecb")
 
-keyboard := "nuphy/air60_v2/ansi"
-keyboard_path := "keyboards/nuphy/air60_v2"
-link_target := "../../../keyboards/nuphy/air60_v2"
+keyboard := env_var_or_default("KEYBOARD", "nuphy/air60_v2/ansi")
+keyboard_path := env_var_or_default("KEYBOARD_PATH", "keyboards/nuphy/air60_v2")
+link_target := env_var_or_default("LINK_TARGET", "../../../keyboards/nuphy/air60_v2")
 
 default:
     @just --list

@@ -28,18 +28,22 @@ Vial builds.
 The included `Justfile` prepares local firmware trees and symlinks this keyboard
 definition into them. It does not copy the keyboard files.
 
-When targeting a different keyboard, update the keyboard-specific variables at
-the top of `Justfile`:
+The `Justfile` has defaults for the Air60 V2. To target a different keyboard,
+copy `.env.example` to `.env` and override the relevant variables there:
 
-```just
-keyboard := "nuphy/air60_v2/ansi"
-keyboard_path := "keyboards/nuphy/air60_v2"
-link_target := "../../../keyboards/nuphy/air60_v2"
+```sh
+cp .env.example .env
 ```
 
-`keyboard` is the QMK build target, `keyboard_path` is where the keyboard should
-appear inside the QMK/Vial tree, and `link_target` is the relative symlink target
-from that generated tree back to this repository.
+```dotenv
+KEYBOARD=nuphy/air60_v2/ansi
+KEYBOARD_PATH=keyboards/nuphy/air60_v2
+LINK_TARGET=../../../keyboards/nuphy/air60_v2
+```
+
+`KEYBOARD` is the QMK build target, `KEYBOARD_PATH` is where the keyboard should
+appear inside the QMK/Vial tree, and `LINK_TARGET` is the relative symlink target
+from that generated tree back to this repository. `.env` is ignored by git.
 
 Prepare both trees:
 
