@@ -37,13 +37,12 @@ cp .env.example .env
 
 ```dotenv
 KEYBOARD=nuphy/air60_v2/ansi
-KEYBOARD_PATH=keyboards/nuphy/air60_v2
-LINK_TARGET=../../../keyboards/nuphy/air60_v2
 ```
 
-`KEYBOARD` is the QMK build target, `KEYBOARD_PATH` is where the keyboard should
-appear inside the QMK/Vial tree, and `LINK_TARGET` is the relative symlink target
-from that generated tree back to this repository. `.env` is ignored by git.
+`KEYBOARD` is the QMK build target in `brand/keyboard/layout` form. The
+`Justfile` derives the symlink path from it automatically, so
+`nuphy/air60_v2/ansi` is linked as `keyboards/nuphy/air60_v2/ansi` inside the
+generated QMK/Vial trees. `.env` is ignored by git.
 
 Prepare both trees:
 
