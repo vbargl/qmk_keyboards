@@ -1,18 +1,12 @@
 # qmk_keyboards
 
-External keyboard definitions for QMK and Vial.
-
-Currently this repo contains:
-
-```text
-keyboards/nuphy/air60_v2/ansi
-```
+External keyboard definitions for QMK/Via and/or QMK/Vial.
 
 Keyboard-specific notes and validation details live with the keyboard
 definition:
 
 ```text
-keyboards/nuphy/air60_v2/ansi/readme.md
+keyboards/<brand>/<product>/<layout>/readme.md
 ```
 
 ## Target Revisions
@@ -33,6 +27,19 @@ Vial builds.
 
 The included `Justfile` prepares local firmware trees and symlinks this keyboard
 definition into them. It does not copy the keyboard files.
+
+When targeting a different keyboard, update the keyboard-specific variables at
+the top of `Justfile`:
+
+```just
+keyboard := "nuphy/air60_v2/ansi"
+keyboard_path := "keyboards/nuphy/air60_v2"
+link_target := "../../../keyboards/nuphy/air60_v2"
+```
+
+`keyboard` is the QMK build target, `keyboard_path` is where the keyboard should
+appear inside the QMK/Vial tree, and `link_target` is the relative symlink target
+from that generated tree back to this repository.
 
 Prepare both trees:
 
