@@ -2,15 +2,18 @@
 
 External keyboard definitions for QMK and Vial.
 
-Currently this repo contains the NuPhy Air60 V2 ANSI keyboard definition:
+Currently this repo contains:
 
 ```text
 keyboards/nuphy/air60_v2/ansi
 ```
 
-Both VIA and Vial keymaps are included. The Air60 V2 firmware has been
-validated against the current upstream `qmk/qmk_firmware` `master` commit listed
-below, and the keyboard is recognized by both VIA and Vial.
+Keyboard-specific notes and validation details live with the keyboard
+definition:
+
+```text
+keyboards/nuphy/air60_v2/ansi/readme.md
+```
 
 ## Target Revisions
 
@@ -22,10 +25,9 @@ This tree is targeted at these upstream firmware revisions:
 | QMK current upstream | `https://github.com/qmk/qmk_firmware.git` | `cf93bbb78fe0bbf994663555de41372c4b5e59fe` |
 | Vial QMK | `https://github.com/vial-kb/vial-qmk.git` | `00fc4627cd038ac9b7e9b8bf2b40b50e9e88aecb` |
 
-The keyboard definition started from NuPhy's `nuphy-keyboards` branch. The QMK
-commit is the latest upstream `qmk/qmk_firmware` commit this standalone tree was
-validated against. The Vial commit is the `vial-kb/vial-qmk` revision used to
-build and flash the tested Vial firmware.
+The QMK commit is the current upstream `qmk/qmk_firmware` `master` revision this
+tree is targeted at. The Vial commit is the `vial-kb/vial-qmk` revision used for
+Vial builds.
 
 ## Using Just
 
@@ -98,32 +100,3 @@ make nuphy/air60_v2/ansi:vial
 
 Use `:via` in the QMK tree and `:vial` in the Vial QMK tree. The Vial QMK tree
 is expected to build this keyboard as `nuphy/air60_v2/ansi:vial`.
-
-## Notes
-
-The Air60 V2 config defines both the older `SD1_*` UART pin names and the newer
-`UART_*` pin names. This is intentional: current QMK and Vial QMK use
-`UART_TX_PIN`/`UART_RX_PIN`, and without those aliases the UART driver can fall
-back to `A9`, which conflicts with the Air60 V2 matrix column used by
-Backspace, `\|`, and Enter.
-
-The physical Mac/Win switch selects the active base layer: Mac uses layer `0`
-and Windows uses layer `7`.
-
-The VIA firmware has been built against upstream `qmk/qmk_firmware`, flashed,
-and recognized by VIA with the included layout definition. The Vial firmware has
-also been built and flashed from `vial-qmk`, and the Vial desktop app recognizes
-it without an external keyboard definition.
-
-## Validation
-
-These checks were run with `keyboards/nuphy/air60_v2` symlinked into clean
-target worktrees:
-
-```sh
-make nuphy/air60_v2/ansi:via
-make nuphy/air60_v2/ansi:vial
-```
-
-The VIA build was flashed and recognized by VIA. The Vial build was also flashed
-and recognized by the Vial desktop app.
