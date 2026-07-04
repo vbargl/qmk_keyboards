@@ -107,6 +107,9 @@ The Air60 V2 config defines both the older `SD1_*` UART pin names and the newer
 back to `A9`, which conflicts with the Air60 V2 matrix column used by
 Backspace, `\|`, and Enter.
 
+The physical Mac/Win switch selects the active base layer: Mac uses layer `0`
+and Windows uses layer `7`.
+
 The VIA firmware has been built against upstream `qmk/qmk_firmware`, flashed,
 and recognized by VIA with the included layout definition. The Vial firmware has
 also been built and flashed from `vial-qmk`, and the Vial desktop app recognizes
