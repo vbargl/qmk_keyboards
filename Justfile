@@ -32,14 +32,13 @@ prepare-vial:
     ln -s {{link_target}} qmk_vial/{{keyboard_path}}
 
 build-via: prepare-qmk
-    cd qmk_firmware && qmk compile -kb {{keyboard}} -km via
+    cd qmk_firmware && make {{keyboard}}:via
 
 build-vial: prepare-vial
     cd qmk_vial && make {{keyboard}}:vial
 
 flash-via: prepare-qmk
-    cd qmk_firmware && qmk flash -kb {{keyboard}} -km via
+    cd qmk_firmware && make {{keyboard}}:via:flash
 
 flash-vial: prepare-vial
     cd qmk_vial && make {{keyboard}}:vial:flash
-

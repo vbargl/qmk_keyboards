@@ -78,7 +78,7 @@ git checkout cf93bbb78fe0bbf994663555de41372c4b5e59fe
 git submodule update --init --recursive
 mkdir -p keyboards/nuphy
 ln -s ../../../keyboards/nuphy/air60_v2 keyboards/nuphy/air60_v2
-qmk compile -kb nuphy/air60_v2/ansi -km via
+make nuphy/air60_v2/ansi:via
 ```
 
 For Vial, clone `vial-qmk` at the target commit and use the same symlink
@@ -93,6 +93,9 @@ mkdir -p keyboards/nuphy
 ln -s ../../../keyboards/nuphy/air60_v2 keyboards/nuphy/air60_v2
 make nuphy/air60_v2/ansi:vial
 ```
+
+Use `:via` in the QMK tree and `:vial` in the Vial QMK tree. The Vial QMK tree
+is expected to build this keyboard as `nuphy/air60_v2/ansi:vial`.
 
 ## Notes
 
@@ -111,7 +114,7 @@ These checks were run with `keyboards/nuphy/air60_v2` symlinked into clean
 target worktrees:
 
 ```sh
-qmk compile -kb nuphy/air60_v2/ansi -km via
+make nuphy/air60_v2/ansi:via
 make nuphy/air60_v2/ansi:vial
 ```
 
