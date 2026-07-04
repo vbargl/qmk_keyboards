@@ -29,7 +29,7 @@ The included `Justfile` prepares local firmware trees and symlinks this keyboard
 definition into them. It does not copy the keyboard files.
 
 The `Justfile` has defaults for the Air60 V2. To target a different keyboard,
-copy `.env.example` to `.env` and override the relevant variables there:
+copy `.env.example` to `.env` and override `KEYBOARD` there:
 
 ```sh
 cp .env.example .env
